@@ -7,7 +7,7 @@ public class MySolution {
         System.out.println(i);
     }
     public int primePalindrome(int n) {
-        for (int i = n; i<= Integer.MAX_VALUE; i++) {
+        for (int i = n; i   <= Integer.MAX_VALUE; i++) {
             if (isPalindrome(i) && isPrime(i))
                 return i;
         }
