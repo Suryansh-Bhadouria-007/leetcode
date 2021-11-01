@@ -1,8 +1,6 @@
 package seanp;
 
 import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Queue;
 
 public class PopulateNextRightPointers {
@@ -34,19 +32,17 @@ public class PopulateNextRightPointers {
         q.offer(root);
         while (!q.isEmpty()) {
             int size = q.size();
-            List<Node> currentLevel = new ArrayList<>();
+            Node prev = null;
             for (int i = 0; i < size; i++) {
                 Node node = q.poll();
-                currentLevel.add(node);
+                if (prev != null)
+                    prev.next = node;
+                prev = node;
                 if (node.left != null)
                     q.offer(node.left);
                 if (node.right != null)
                     q.offer(node.right);
             }
-            for (int i = 0; i < currentLevel.size() - 1; i++) {
-                currentLevel.get(i).next = currentLevel.get(i + 1).next;
-            }
-            currentLevel.get(currentLevel.size() - 1).next = null;
         }
         return root;
     }
